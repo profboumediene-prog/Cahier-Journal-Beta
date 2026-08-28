@@ -85,10 +85,7 @@ body{
   font-size:11.5px;color:#fff;background:linear-gradient(135deg,var(--rose-500),var(--rose-600));
   padding:5px 11px;border-radius:999px;
 }
-.brand .subtitle{color:var(--ink-2);font-size:13px;font-weight:600;flex:1;min-width:170px;}
-.brand-contact{display:flex;flex-direction:column;gap:2px;font-size:12.5px;color:var(--blue-700);font-weight:700;}
-.brand-contact span span{color:var(--rose-600);}
-
+.brand .subtitle{color:var(--ink-2);font-size:13.5px;font-weight:600;flex:1;min-width:170px;}
 .year{
   display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--field-bd);
   border-radius:999px;padding:5px 8px 5px 13px;color:var(--blue-700);font-weight:600;font-size:14px;
@@ -186,7 +183,7 @@ td.col-remarques{width:230px;} td.col-acts{min-width:210px;} td.col-tools{width:
 .detail-badge.on{color:#fff;background:linear-gradient(135deg,var(--rose-500),var(--rose-600));border-color:transparent;}
 
 .row-tools{display:inline-flex;gap:6px;}
-.tool{border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px;cursor:pointer;color:var(--muted);transition:.15s;line-height:0;}
+.tool{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px;cursor:pointer;color:var(--muted);transition:.15s;line-height:0;}
 .tool svg{width:18px;height:18px;}
 .add-row{margin:10px 10px 16px;}
 
@@ -255,7 +252,6 @@ dialog::backdrop{background:rgba(60,45,65,.5);backdrop-filter:blur(3px);}
 .doc-page:first-child { margin-top: 0; }
 
 .doc-header { text-align: center; margin-bottom: 35px; padding-top: 10px; }
-.doc-header-top{display:flex;justify-content:space-between;align-items:flex-start;font-size:12px;color:var(--blue-700);font-weight:700;margin-bottom:15px;border-bottom:1px dashed var(--rose-200);padding-bottom:8px;}
 .doc-title-wrapper { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; }
 .doc-title { font-family: var(--ff-script); color: var(--blue-700); font-size: 54px; font-weight: 400; margin: 0; line-height: 1; }
 .doc-subtitle { font-family: var(--ff); font-size: 14px; font-weight: 700; color: var(--rose-600); letter-spacing: 0.1em; text-transform: uppercase; background: var(--rose-50); padding: 4px 10px; border-radius: 999px; display: inline-block; margin-left: 10px; transform: translateY(-12px); border: 1px solid var(--rose-100); }
@@ -382,11 +378,7 @@ dialog::backdrop{background:rgba(60,45,65,.5);backdrop-filter:blur(3px);}
     <div class="brand">
       <h1>Cahier Journal</h1>
       <span class="tag">✿ FLE</span>
-      <span class="subtitle">Français · Enseignement secondaire</span>
-      <div class="brand-contact">
-        <span>📘 <span>L'Atelier Des PES de Français</span></span>
-        <span>📞 Contact : 05 53 12 14 58</span>
-      </div>
+      <span class="subtitle">L'Atelier Des PES de Français · Tel 05 53 12 14 58</span>
       <span class="year">Année scolaire <input id="year" type="text" spellcheck="false" aria-label="Année scolaire" /></span>
       <span id="status" class="status saved"><span class="dot"></span><span id="statusTxt">Enregistré</span></span>
     </div>
@@ -749,7 +741,7 @@ const SEANCES = {
   "Évaluation diagnostique":{competences:["Mobiliser ses acquis antérieurs."],objectifs:["Évaluer les prérequis liés à « {OE} »."],supports:["Test / questionnaire diagnostique."],observations:["Prérequis globalement maîtrisés."]},
   "Mise en place de la séquence":{competences:["Comprendre l'objectif de la séquence."],objectifs:["Présenter les objectifs de la séquence liée à « {OE} »."],supports:["Tableau, cahier."],observations:["Objectifs de la séquence explicités."]},
   "Compréhension de l'oral":{competences:["Comprendre et interpréter des messages oraux."],objectifs:["Écouter et comprendre un support oral relevant de « {OE} »."],supports:["Support audio / vidéo."],observations:["Bonne compréhension du support oral."]},
-  "Production orale":{competences:["Produire des messages oraux cohérents."],objectifs:["S'exprimer oralement sur un thème lié à « {OE} »."],supports:["Images, sujet d'expression."],observations:["Bonne implication du groupe à l'oral."]},
+  "Production orale":{competences:["Produire des messages oraux cohérents."],objectifs:["S'expresser oralement sur un thème lié à « {OE} »."],supports:["Images, sujet d'expression."],observations:["Bonne implication du groupe à l'oral."]},
   "Compréhension de l'écrit":{competences:["Comprendre et interpréter des textes écrits variés."],objectifs:["Lire et comprendre un texte relevant de « {OE} »."],supports:["Texte support du manuel scolaire."],observations:["Bonne compréhension globale du texte."]},
   "Lecture entraînement":{competences:["Lire de manière fluide et expressive."],objectifs:["Lire un texte support de manière fluide."],supports:["Texte support, manuel scolaire."],observations:["Lecture fluide pour la majorité du groupe."]},
   "Points de langue":{competences:["Mobiliser des ressources linguistiques au service du sens."],objectifs:["Identifier et employer un fait de langue au service de « {OE} »."],supports:["Corpus de phrases, manuel."],observations:["Notion globalement acquise."]},
@@ -771,7 +763,7 @@ function suggestFor(seance,oe){const b=SEANCES[seance]||GENERIC;return {competen
 /* ============================================================
    3. ÉTAT & PERSISTANCE
    ============================================================ */
-const KEY='cahier-journal-fle-v2';
+const KEY='cahier-journal-fle-v3';
 const $=(s,r=document)=>r.querySelector(s);
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const todayISO=()=>new Date().toISOString().slice(0,10);
@@ -779,7 +771,7 @@ const esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;
 
 function makeRow(){return {id:uid(),heure:'',classe:'',activites:'',remarques:'',details:{niveau:'',filiere:'',groupe:'',duree:'',projet:'',objet:'',sequence:'',seance:'',competence:'',objectif:'',supports:'',remarques:'',_auto:{}}};}
 function makeDay(d){return {id:uid(),date:d||todayISO(),rows:[makeRow()],bilan:''};}
-function defaultState(){return {schoolYear:'2026 / 2027',days:[makeDay(todayISO())]};}
+function defaultState(){return {schoolYear:'2026 / 2027',days:[]};}
 
 let state;
 try{state=JSON.parse(localStorage.getItem(KEY))||defaultState();}catch(e){state=defaultState();}
@@ -823,7 +815,7 @@ function getBilanSuggestions(d) {
   const cats = {
     "✓ Réussites": ["Les objectifs de la journée sont globalement atteints.", "Bonne implication générale du groupe."],
     "⚠ Difficultés": ["Le temps consacré aux activités était insuffisant."],
-    "↻ À consolider": ["Certaines notions doivent être consolidées en remédiation."]
+    "↻ À consolider": ["Certaines notions doivent être consolider en remédiation."]
   };
   if(acts.some(a => a.includes("Production orale"))) cats["✓ Réussites"].push("La participation orale est satisfaisante.");
   return cats;
@@ -984,10 +976,6 @@ function renderPreview(daysToRender) {
 
     html += `<div class="doc-page">
         <div class="doc-header">
-          <div class="doc-header-top">
-            <span>📘 L'Atelier Des PES de Français</span>
-            <span>📞 05 53 12 14 58</span>
-          </div>
           <div class="doc-title-wrapper">
             <svg class="doc-decor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C10 8 7 6 5 5c3 1 5 4 7 7zm0 0c2-4 5-6 7-7-3 1-5 4-7 7zM12 12c-2 2-4 4-6 4 2-1 4-3 6-4zm0 0c2 2 4 4 6 4-2-1-4-3-6-4z"/></svg>
             <h2 class="doc-title">Cahier Journal <span class="doc-subtitle">FLE</span></h2>
